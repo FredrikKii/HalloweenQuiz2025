@@ -1,0 +1,21 @@
+.awnser-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  max-width: 400px;
+  align-items: center;
+}
+.awnser-container button {
+  background: linear-gradient(180deg, #ff6600 0%, #cc5200 100%);
+  color: #000;
+  border: none;
+  border-radius: 12px;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 10px #ff6600;
+  transition: all 0.2s ease;
+  width: 100%;
+}

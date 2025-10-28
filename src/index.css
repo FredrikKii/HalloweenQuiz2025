@@ -1,0 +1,54 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(circle at top, #1a1a1a 0%, #000 100%);
+  color: #ffedd5;
+  font-family: 'Trebuchet MS', sans-serif;
+  height: 100%;
+}
+
+main {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 10px #ff6600, 0 0 20px #ff4500;
+}
+
+p {
+  font-size: 1.1rem;
+  color: #ffcc99;
+  margin-bottom: 2rem;
+}
+
+button, a {
+  background: linear-gradient(180deg, #ff6600 0%, #cc5200 100%);
+  color: #000;
+  border: none;
+  border-radius: 12px;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 0 10px #ff6600;
+  transition: all 0.2s ease;
+}
+
+button:hover, a:hover {
+  background: linear-gradient(180deg, #ffa64d 0%, #ff6600 100%);
+  transform: scale(1.05);
+}
+
+@media (max-width: 600px) {
+  h1 { font-size: 1.8rem; }
+  button, a { width: 80%; font-size: 1rem; }
+}
