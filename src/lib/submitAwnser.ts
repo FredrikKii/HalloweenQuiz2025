@@ -14,8 +14,7 @@ export async function submitAnswer(
     userAgent: navigator.userAgent,
   };
 
-  // Fire-and-forget: undvik preflight + CORS genom text/plain + no-cors.
-  // Opaque response = vi kan inte läsa svaret, men Apps Script får POST:en.
+  // 🟠 Viktigt: "no-cors" + text/plain => ingen preflight och Apps Script tar emot
   await fetch(endpoint, {
     method: "POST",
     mode: "no-cors",
@@ -23,6 +22,5 @@ export async function submitAnswer(
     body: JSON.stringify(payload),
   });
 
-  // Anta success (vi kan inte läsa svaret pga no-cors, men POST skickas).
   return true;
 }

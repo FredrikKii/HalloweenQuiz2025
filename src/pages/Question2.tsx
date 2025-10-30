@@ -1,128 +1,175 @@
-import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { submitAnswer } from "../lib/submitAwnser";
 import { ENDPOINT } from "../lib/endpoint";
 
 export default function Question2() {
-  const navigate = useNavigate();
   const [team, setTeam] = useState("");
+  const [members, setMembers] = useState<string[]>([]);
   const [answer, setAnswer] = useState("");
   const [locked, setLocked] = useState(false);
-  const questionId = 2; // 👈 ändrat till fråga 2
+  const [status, setStatus] = useState("");
+  const nav = useNavigate();
+  const questionId = 2;
 
-  // ✅ Hämta lagets namn och tidigare status
   useEffect(() => {
     const t = localStorage.getItem("team");
-    if (!t) {
-      navigate("/team");
-      return;
+    const m = localStorage.getItem("teamMembers");
+    if (t) setTeam(t);
+    if (m) setMembers(JSON.parse(m));
+    if (t) {
+      const keyLock = `locked:q${questionId}:team:${t}`;
+      const keyAns = `answer:q${questionId}:team:${t}`;
+      if (localStorage.getItem(keyLock) === "1") setLocked(true);
+      const prev = localStorage.getItem(keyAns);
+      if (prev) setAnswer(prev);
     }
-    setTeam(t);
+  }, []);
 
-    const keyLock = `locked:q${questionId}:team:${t}`;
-    const keyAns = `answer:q${questionId}:team:${t}`;
-    if (localStorage.getItem(keyLock) === "1") setLocked(true);
-    const prev = localStorage.getItem(keyAns);
-    if (prev) setAnswer(prev);
-  }, [navigate]);
-
-  // ✅ Lås in svaret (skickas till Google Sheet)
   async function lockIn() {
-    if (!answer.trim() || !team) return;
+    if (locked || !answer.trim()) return;
+    setStatus("Skickar...");
     try {
-      await submitAnswer(ENDPOINT, team, questionId, answer.trim());
+      await submitAnswer(ENDPOINT, team, questionId, answer.trim(), members);
       setLocked(true);
+      setStatus("✅ Svar skickat!");
       localStorage.setItem(`locked:q${questionId}:team:${team}`, "1");
       localStorage.setItem(`answer:q${questionId}:team:${team}`, answer.trim());
-      alert("Svar inskickat! ✅");
     } catch (err) {
-      alert("Kunde inte skicka svaret. Försök igen.");
-      console.error(err);
+      console.error("Kunde inte skicka svaret:", err);
+      setStatus("❌ Kunde inte skicka svaret. Försök igen.");
     }
   }
 
   return (
-    <main
+    <div
       style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
         minHeight: "100vh",
-        display: "grid",
-        placeItems: "center",
-        background: "radial-gradient(circle at top, #111 0%, #000 100%)",
-        color: "#ffedd5",
-        padding: "2rem",
+        backgroundColor: "#0d0d0d",
+        color: "#f5f5f5",
+        textAlign: "center",
+        padding: "1.5rem",
       }}
     >
-      <div style={{ maxWidth: 520, width: "100%" }}>
-        <h1 style={{ textAlign: "center" }}>Fråga 2</h1>
-        <p style={{ textAlign: "center", marginBottom: "1rem" }}>
-          Vilken färg har pumpans klassiska Halloweenlykta? 🎃
+      <h2
+        style={{ color: "#ff7518", marginBottom: "1rem", fontSize: "1.8rem" }}
+      >
+        Fråga 2 👻
+      </h2>
+
+      <p style={{ marginBottom: "0.5rem" }}>
+        <strong>Lag:</strong> {team}
+      </p>
+      {members.length > 0 && (
+        <p style={{ fontSize: "0.9rem", opacity: 0.8, marginBottom: "1.5rem" }}>
+          {members.join(", ")}
         </p>
+      )}
 
-        <textarea
-          value={answer}
-          onChange={(e) => setAnswer(e.target.value)}
-          disabled={locked}
-          placeholder="Skriv ert svar här..."
-          style={{
-            width: "100%",
-            minHeight: 120,
-            padding: "1rem",
-            borderRadius: 10,
-            border: "1px solid #444",
-            resize: "vertical",
-          }}
-        />
+      <p style={{ marginTop: "0.5rem", maxWidth: "300px" }}>
+        Vilken klassisk skräckfilm från 1980 utspelar sig på det isolerade
+        Overlook Hotel?
+      </p>
 
-        <div
+      <textarea
+        value={answer}
+        onChange={(e) => setAnswer(e.target.value)}
+        disabled={locked}
+        placeholder="Skriv ditt svar här..."
+        rows={3}
+        style={{
+          marginTop: "1rem",
+          padding: "0.8rem",
+          width: "90%",
+          maxWidth: "320px",
+          borderRadius: "8px",
+          border: "2px solid #ff7518",
+          backgroundColor: locked ? "#1a1a1a" : "#111",
+          color: "#fff",
+          fontSize: "1rem",
+          resize: "none",
+          textAlign: "center",
+        }}
+      />
+
+      <button
+        onClick={lockIn}
+        disabled={locked}
+        style={{
+          marginTop: "1.5rem",
+          padding: "0.8rem 2rem",
+          backgroundColor: locked ? "#333" : "#ff7518",
+          color: "#fff",
+          fontWeight: "bold",
+          fontSize: "1.1rem",
+          border: "none",
+          borderRadius: "8px",
+          cursor: locked ? "not-allowed" : "pointer",
+          transition: "0.2s ease",
+        }}
+      >
+        {locked ? "Svar låst ✅" : "Lås in svaret"}
+      </button>
+
+      {status && !locked && (
+        <p
           style={{
-            display: "flex",
-            justifyContent: "center",
-            gap: "1rem",
             marginTop: "1rem",
+            color: status.startsWith("✅") ? "#6aff6a" : "#ff4444",
+            fontSize: "0.95rem",
           }}
         >
-          <Link
-            to="/question/1"
-            style={{
-              background: "linear-gradient(180deg, #666 0%, #333 100%)",
-              color: "#fff",
-              padding: "0.8rem 1.5rem",
-              borderRadius: "10px",
-              textDecoration: "none",
-              fontWeight: "bold",
-            }}
-          >
-            Tillbaka
-          </Link>
+          {status}
+        </p>
+      )}
 
-          <button
-            onClick={lockIn}
-            disabled={locked}
-            style={{
-              background: locked
-                ? "#555"
-                : "linear-gradient(180deg, #ff6600 0%, #cc5200 100%)",
-              color: locked ? "#ddd" : "#000",
-              padding: "0.8rem 1.5rem",
-              borderRadius: "10px",
-              fontWeight: "bold",
-              border: "none",
-              cursor: locked ? "not-allowed" : "pointer",
-            }}
-          >
-            {locked ? "Svar låst ✅" : "Lås in svaret"}
-          </button>
-        </div>
+      <div
+        style={{
+          marginTop: "2rem",
+          display: "flex",
+          gap: "1rem",
+          flexWrap: "wrap",
+          justifyContent: "center",
+        }}
+      >
+        <button
+          onClick={() => nav("/question/1")}
+          style={{
+            background: "#ff7518",
+            color: "#fff",
+            padding: "0.8rem 2rem",
+            border: "none",
+            borderRadius: "8px",
+            fontWeight: "bold",
+            fontSize: "1.1rem",
+            cursor: "pointer",
+            transition: "0.2s ease",
+          }}
+        >
+          ← Tillbaka
+        </button>
 
-        <div style={{ textAlign: "center", marginTop: "1.5rem" }}>
-          <Link
-            to="/question/3"
-            style={{ color: "#ff6600", textDecoration: "underline" }}
-          >
-            Nästa fråga
-          </Link>
-        </div>
+        <button
+          onClick={() => nav("/question/3")}
+          style={{
+            background: "none",
+            border: "2px solid #ff7518",
+            color: "#ff7518",
+            padding: "0.8rem 2rem",
+            borderRadius: "8px",
+            fontWeight: "bold",
+            fontSize: "1.1rem",
+            cursor: "pointer",
+            transition: "0.2s ease",
+          }}
+        >
+          Nästa fråga →
+        </button>
       </div>
-    </main>
+    </div>
   );
 }

@@ -1,22 +1,25 @@
+// src/pages/Question4.tsx
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { submitAnswer } from "../lib/submitAwnser";
+import { submitAnswer } from "../lib/submitAwnser"; // 👈 rätt stavning
 import { ENDPOINT } from "../lib/endpoint";
 
-export default function Question3() {
+export default function Question4() {
+  // 👈 rätt komponentnamn
   const [team, setTeam] = useState("");
   const [members, setMembers] = useState<string[]>([]);
   const [answer, setAnswer] = useState("");
   const [locked, setLocked] = useState(false);
   const [status, setStatus] = useState("");
   const nav = useNavigate();
-  const questionId = 3;
+  const questionId = 4; // 👈 rätt fråga-id
 
   useEffect(() => {
     const t = localStorage.getItem("team");
     const m = localStorage.getItem("teamMembers");
     if (t) setTeam(t);
     if (m) setMembers(JSON.parse(m));
+
     if (t) {
       const keyLock = `locked:q${questionId}:team:${t}`;
       const keyAns = `answer:q${questionId}:team:${t}`;
@@ -24,7 +27,7 @@ export default function Question3() {
       const prev = localStorage.getItem(keyAns);
       if (prev) setAnswer(prev);
     }
-  }, []);
+  }, []); // questionId är konstant i komponenten → ok
 
   async function lockIn() {
     if (locked || !answer.trim()) return;
@@ -58,7 +61,7 @@ export default function Question3() {
       <h2
         style={{ color: "#ff7518", marginBottom: "1rem", fontSize: "1.8rem" }}
       >
-        Fråga 3 🕯️
+        Fråga 4 🦇
       </h2>
 
       <p style={{ marginBottom: "0.5rem" }}>
@@ -71,8 +74,7 @@ export default function Question3() {
       )}
 
       <p style={{ marginTop: "0.5rem", maxWidth: "300px" }}>
-        Vad kallas den natt då gränsen mellan de levande och döda sägs vara som
-        tunnast, och som firas 31 oktober?
+        (Din fråga 4-text här)
       </p>
 
       <textarea
@@ -137,7 +139,7 @@ export default function Question3() {
         }}
       >
         <button
-          onClick={() => nav("/question/2")}
+          onClick={() => nav("/question/3")}
           style={{
             background: "#ff7518",
             color: "#fff",
@@ -154,7 +156,7 @@ export default function Question3() {
         </button>
 
         <button
-          onClick={() => nav("/question/4")}
+          onClick={() => nav("/question/5")}
           style={{
             background: "none",
             border: "2px solid #ff7518",

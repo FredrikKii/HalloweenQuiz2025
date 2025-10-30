@@ -3,14 +3,14 @@ import { useNavigate } from "react-router-dom";
 import { submitAnswer } from "../lib/submitAwnser";
 import { ENDPOINT } from "../lib/endpoint";
 
-export default function Question3() {
+export default function Question5() {
   const [team, setTeam] = useState("");
   const [members, setMembers] = useState<string[]>([]);
   const [answer, setAnswer] = useState("");
   const [locked, setLocked] = useState(false);
   const [status, setStatus] = useState("");
   const nav = useNavigate();
-  const questionId = 3;
+  const questionId = 5;
 
   useEffect(() => {
     const t = localStorage.getItem("team");
@@ -58,7 +58,7 @@ export default function Question3() {
       <h2
         style={{ color: "#ff7518", marginBottom: "1rem", fontSize: "1.8rem" }}
       >
-        Fråga 3 🕯️
+        Fråga 5 🕯️
       </h2>
 
       <p style={{ marginBottom: "0.5rem" }}>
@@ -70,10 +70,7 @@ export default function Question3() {
         </p>
       )}
 
-      <p style={{ marginTop: "0.5rem", maxWidth: "300px" }}>
-        Vad kallas den natt då gränsen mellan de levande och döda sägs vara som
-        tunnast, och som firas 31 oktober?
-      </p>
+      <p style={{ marginTop: "0.5rem", maxWidth: "300px" }}>Fråga 5</p>
 
       <textarea
         value={answer}
@@ -137,7 +134,7 @@ export default function Question3() {
         }}
       >
         <button
-          onClick={() => nav("/question/2")}
+          onClick={() => nav("/question/4")}
           style={{
             background: "#ff7518",
             color: "#fff",
@@ -154,7 +151,7 @@ export default function Question3() {
         </button>
 
         <button
-          onClick={() => nav("/question/4")}
+          onClick={() => nav("/question/6")}
           style={{
             background: "none",
             border: "2px solid #ff7518",

@@ -78,7 +78,9 @@ export default function Team() {
       }}
     >
       <div style={{ maxWidth: 520, width: "100%" }}>
-        <h1 style={{ textAlign: "center", marginBottom: 8 }}>🎃 Halloween-quiz</h1>
+        <h1 style={{ textAlign: "center", marginBottom: 8 }}>
+          Halloween i Eskilstorp
+        </h1>
         <p style={{ textAlign: "center", marginBottom: 16 }}>
           Skriv in lagnamn och lagmedlemmar (2–4 st)
         </p>
@@ -90,7 +92,7 @@ export default function Team() {
           onChange={(e) => setTeam(e.target.value)}
           placeholder="Ex: Team Spöke"
           style={{
-            width: "100%",
+            width: "92%",
             padding: "0.9rem",
             borderRadius: 10,
             border: "1px solid #444",
@@ -101,7 +103,9 @@ export default function Team() {
         />
 
         {/* Medlemmar */}
-        <label style={{ display: "block", marginBottom: 6 }}>Lagmedlemmar</label>
+        <label style={{ display: "block", marginBottom: 6 }}>
+          Lagmedlemmar
+        </label>
         <div style={{ display: "grid", gap: 10 }}>
           {members.map((m, i) => (
             <div key={i} style={{ display: "flex", gap: 8 }}>
@@ -177,7 +181,14 @@ export default function Team() {
           </button>
         </div>
 
-        <p style={{ opacity: 0.75, fontSize: 12, marginTop: 10, textAlign: "center" }}>
+        <p
+          style={{
+            opacity: 0.75,
+            fontSize: 12,
+            marginTop: 10,
+            textAlign: "center",
+          }}
+        >
           Ditt lag registreras när du startar quizet.
         </p>
       </div>
