@@ -37,24 +37,6 @@ export default function Thanks() {
     return out;
   }, [team]);
 
-  function restart() {
-    // rensa endast nycklar relaterade till detta lag
-    for (const k of Object.keys(localStorage)) {
-      if (k === "team" || k === "teamMembers") continue;
-      if (
-        k.includes(`:team:${team}`) ||
-        k.startsWith("locked:q") ||
-        k.startsWith("answer:q")
-      ) {
-        localStorage.removeItem(k);
-      }
-    }
-    // rensa lag
-    localStorage.removeItem("team");
-    localStorage.removeItem("teamMembers");
-    nav("/team");
-  }
-
   return (
     <div
       style={{

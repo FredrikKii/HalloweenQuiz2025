@@ -1,9 +1,10 @@
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   background: radial-gradient(circle at top, #1a1a1a 0%, #000 100%);
   color: #ffedd5;
-  font-family: 'Trebuchet MS', sans-serif;
+  font-family: "Trebuchet MS", sans-serif;
   height: 100%;
 }
 
@@ -29,7 +30,8 @@ p {
   margin-bottom: 2rem;
 }
 
-button, a {
+button,
+a {
   background: linear-gradient(180deg, #ff6600 0%, #cc5200 100%);
   color: #000;
   border: none;
@@ -43,12 +45,19 @@ button, a {
   transition: all 0.2s ease;
 }
 
-button:hover, a:hover {
+button:hover,
+a:hover {
   background: linear-gradient(180deg, #ffa64d 0%, #ff6600 100%);
   transform: scale(1.05);
 }
 
 @media (max-width: 600px) {
-  h1 { font-size: 1.8rem; }
-  button, a { width: 80%; font-size: 1rem; }
+  h1 {
+    font-size: 1.8rem;
+  }
+  button,
+  a {
+    width: 80%;
+    font-size: 1rem;
+  }
 }

@@ -54,7 +54,8 @@ export default function Question1() {
         backgroundColor: "#0d0d0d",
         color: "#f5f5f5",
         textAlign: "center",
-        padding: "1.5rem",
+        // padding: "1.5rem",
+        height: "667px",
       }}
     >
       <h2
