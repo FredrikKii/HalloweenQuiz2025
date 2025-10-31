@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { submitAnswer } from "../lib/submitAwnser";
 import { ENDPOINT } from "../lib/endpoint";
+import Bild from "../lib/images/Bild.png";
 
 export default function Question10() {
   const [team, setTeam] = useState("");
@@ -58,7 +59,7 @@ export default function Question10() {
       <h2
         style={{ color: "#ff7518", marginBottom: "1rem", fontSize: "1.8rem" }}
       >
-        Fråga 10 🕯️
+        Fråga 10 🎃
       </h2>
 
       <p style={{ marginBottom: "0.5rem" }}>
@@ -71,6 +72,21 @@ export default function Question10() {
       )}
 
       <p style={{ marginTop: "0.5rem", maxWidth: "300px" }}>Fråga 10</p>
+
+      <p style={{ marginTop: "0.5rem", maxWidth: "300px" }}>
+        Vilken film är detta?
+      </p>
+      <img
+        src={Bild}
+        alt="Anagram"
+        style={{
+          width: "90%",
+          maxWidth: "300px",
+          marginTop: "1rem",
+          borderRadius: "8px",
+          border: "2px solid #ff7518",
+        }}
+      />
 
       <textarea
         value={answer}
@@ -164,7 +180,7 @@ export default function Question10() {
             transition: "0.2s ease",
           }}
         >
-          Slutför →
+          Lämna in svar →
         </button>
       </div>
     </div>

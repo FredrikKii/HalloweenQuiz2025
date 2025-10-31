@@ -74,7 +74,8 @@ export default function Question1() {
       )}
 
       <p style={{ marginTop: "0.5rem", maxWidth: "300px" }}>
-        Vilket djur förknippas ofta med häxor?
+        Vilken klassisk skräckfilm från 1973 handlar om en liten flicka som blir
+        besatt av en demon, och där en präst försöker driva ut ondskan?
       </p>
 
       <textarea

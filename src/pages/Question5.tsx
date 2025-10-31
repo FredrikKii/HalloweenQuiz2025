@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { submitAnswer } from "../lib/submitAwnser";
 import { ENDPOINT } from "../lib/endpoint";
+import AnagramImg from "../lib/images/Anagram1.png";
 
 export default function Question5() {
   const [team, setTeam] = useState("");
@@ -70,7 +71,20 @@ export default function Question5() {
         </p>
       )}
 
-      <p style={{ marginTop: "0.5rem", maxWidth: "300px" }}>Fråga 5</p>
+      <p style={{ marginTop: "0.5rem", maxWidth: "300px" }}>
+        Vem är skådespelaren?
+      </p>
+      <img
+        src={AnagramImg}
+        alt="Anagram"
+        style={{
+          width: "90%",
+          maxWidth: "300px",
+          marginTop: "1rem",
+          borderRadius: "8px",
+          border: "2px solid #ff7518",
+        }}
+      />
 
       <textarea
         value={answer}

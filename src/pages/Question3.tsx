@@ -71,8 +71,7 @@ export default function Question3() {
       )}
 
       <p style={{ marginTop: "0.5rem", maxWidth: "300px" }}>
-        Vad kallas den natt då gränsen mellan de levande och döda sägs vara som
-        tunnast, och som firas 31 oktober?
+        Vilket holländskt ord betyder 'spöke'?
       </p>
 
       <textarea

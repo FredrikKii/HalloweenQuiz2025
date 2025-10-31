@@ -58,7 +58,7 @@ export default function Question8() {
       <h2
         style={{ color: "#ff7518", marginBottom: "1rem", fontSize: "1.8rem" }}
       >
-        Fråga 8 🕯️
+        Fråga 8 🦇
       </h2>
 
       <p style={{ marginBottom: "0.5rem" }}>
@@ -70,7 +70,9 @@ export default function Question8() {
         </p>
       )}
 
-      <p style={{ marginTop: "0.5rem", maxWidth: "300px" }}>Fråga 8</p>
+      <p style={{ marginTop: "0.5rem", maxWidth: "300px" }}>
+        Vilken TV-serie har detta intro?
+      </p>
 
       <textarea
         value={answer}

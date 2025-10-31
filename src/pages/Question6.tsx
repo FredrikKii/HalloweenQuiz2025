@@ -70,7 +70,9 @@ export default function Question6() {
         </p>
       )}
 
-      <p style={{ marginTop: "0.5rem", maxWidth: "300px" }}>Fråga 6</p>
+      <p style={{ marginTop: "0.5rem", maxWidth: "300px" }}>
+        Vad är en Jack ‘O Lantern?
+      </p>
 
       <textarea
         value={answer}

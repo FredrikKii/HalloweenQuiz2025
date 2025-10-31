@@ -70,7 +70,10 @@ export default function Question9() {
         </p>
       )}
 
-      <p style={{ marginTop: "0.5rem", maxWidth: "300px" }}>Fråga 9</p>
+      <p style={{ marginTop: "0.5rem", maxWidth: "300px" }}>
+        Vilken högtid firar man i Mexiko den 1–2 november, där man hedrar de
+        döda med blommor, mat, ljus och altare?
+      </p>
 
       <textarea
         value={answer}

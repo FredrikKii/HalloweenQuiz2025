@@ -71,8 +71,7 @@ export default function Question2() {
       )}
 
       <p style={{ marginTop: "0.5rem", maxWidth: "300px" }}>
-        Vilken klassisk skräckfilm från 1980 utspelar sig på det isolerade
-        Overlook Hotel?
+        Vad heter den maskbärande mördaren i filmserien Halloween?
       </p>
 
       <textarea

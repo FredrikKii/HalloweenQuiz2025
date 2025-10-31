@@ -58,7 +58,7 @@ export default function Question7() {
       <h2
         style={{ color: "#ff7518", marginBottom: "1rem", fontSize: "1.8rem" }}
       >
-        Fråga 7 🕯️
+        Fråga 7 👻
       </h2>
 
       <p style={{ marginBottom: "0.5rem" }}>
@@ -70,7 +70,11 @@ export default function Question7() {
         </p>
       )}
 
-      <p style={{ marginTop: "0.5rem", maxWidth: "300px" }}>Fråga 7</p>
+      <p style={{ fontSize: "1.5rem", marginTop: "0rem", maxWidth: "300px" }}>
+        Vilken skådespelare?
+      </p>
+
+      <p style={{ marginTop: "0.5rem", maxWidth: "300px" }}>Bråd Krigs Alls </p>
 
       <textarea
         value={answer}

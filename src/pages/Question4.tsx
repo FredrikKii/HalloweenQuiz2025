@@ -74,7 +74,8 @@ export default function Question4() {
       )}
 
       <p style={{ marginTop: "0.5rem", maxWidth: "300px" }}>
-        (Din fråga 4-text här)
+        “Do you like scary movies?” är en ikonisk replik från vilken
+        90-talsfilm?
       </p>
 
       <textarea
